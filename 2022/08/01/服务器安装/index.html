@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          
+        
+    </title>
+
+    <link rel="canonical" href="https://cymhappy.github.io/2022/08/01/服务器安装/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/hux-blog.min.css">
+
+
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Keith的博客</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!-- <img src="https://cymhappy.github.io/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/undefined')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1></h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by Keith on
+                        2022-08-01
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h4 id="如何把文件传输到指定服务器目录"><a href="#如何把文件传输到指定服务器目录" class="headerlink" title="如何把文件传输到指定服务器目录"></a>如何把文件传输到指定服务器目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -P 11622 -r  app  xsy@192.168.213.205:/home/xsy</span><br></pre></td></tr></table></figure>
+
+<h4 id="Linux如何安装nodejs"><a href="#Linux如何安装nodejs" class="headerlink" title="Linux如何安装nodejs"></a>Linux如何安装nodejs</h4><ol>
+<li>先安装nvm</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>安装node v16</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install 16</span><br></pre></td></tr></table></figure>
+
+<p>   centos的版本较低，最高版本的v18 不兼容，懒得搞</p>
+<h4 id="查看磁盘剩余空间"><a href="#查看磁盘剩余空间" class="headerlink" title="查看磁盘剩余空间"></a>查看磁盘剩余空间</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">df</span> -hl</span><br><span class="line"></span><br><span class="line">文件系统                 容量  已用  可用 已用% 挂载点</span><br><span class="line">devtmpfs                 7.5G     0  7.5G    0% /dev</span><br><span class="line">tmpfs                    7.6G     0  7.6G    0% /dev/shm</span><br><span class="line">tmpfs                    7.6G   12M  7.6G    1% /run</span><br><span class="line">tmpfs                    7.6G     0  7.6G    0% /sys/fs/cgroup</span><br><span class="line">/dev/mapper/centos-root   50G  4.2G   46G    9% /</span><br><span class="line">/dev/sda1               1014M  185M  830M   19% /boot</span><br><span class="line">/dev/mapper/centos-home  388G  693M  387G    1% /home</span><br><span class="line">tmpfs                    1.6G   12K  1.6G    1% /run/user/42</span><br><span class="line">tmpfs                    1.6G     0  1.6G    0% /run/user/1001</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>查看目录空间占用情况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">du</span> -sh /home/xsy</span><br><span class="line"></span><br><span class="line">633M    /home/xsy</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看centos版本"><a href="#查看centos版本" class="headerlink" title="查看centos版本"></a>查看centos版本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/redhat-release</span><br><span class="line"></span><br><span class="line">CentOS Linux release 7.9.2009 (Core)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Red Hat Enterprise Linux 8 / Oracle Linux 8 (Architecture Independent), RPM Package		14.1K	</span><br><span class="line">Download</span><br><span class="line">(mysql80-community-release-el8-4.noarch.rpm)	MD5: 72a4647a99c7ac1e3a8efb874b1d4af4</span><br><span class="line">Red Hat Enterprise Linux 7 / Oracle Linux 7 (Architecture Independent), RPM Package		11.0K	</span><br><span class="line">Download</span><br><span class="line">(mysql80-community-release-el7-6.noarch.rpm)	MD5: 62f64deae31dcc2399a0ebe05366498f</span><br><span class="line">Red Hat Enterprise Linux 6 / Oracle Linux 6 (Architecture Independent), RPM Package		11.1K	</span><br><span class="line">Download</span><br><span class="line">(mysql80-community-release-el6-6.noarch.rpm)	MD5: 498d9cd326d1f49683e27f215eda2398</span><br><span class="line">Fedora 35 (Architecture Independent), RPM Package		11.9K	</span><br><span class="line">Download</span><br><span class="line">(mysql80-community-release-fc35-3.noarch.rpm)	MD5: ffc916ae6306ccc453d3ea265961dda5</span><br><span class="line">Fedora 34 (Architecture Independent), RPM Package		12.0K	</span><br><span class="line">Download</span><br><span class="line">(mysql80-community-release-fc34-4.noarch.rpm)	MD5: 7a857bc9ce1ad211988989a802f7ae57</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h4><ol>
+<li>安装运行mysql</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm</span><br><span class="line">rpm -ivh mysql-community-release-el7-5.noarch.rpm</span><br><span class="line">yum update</span><br><span class="line">yum install mysql-server</span><br><span class="line">systemctl start mysql</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>修改密码</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u root password <span class="string">&quot;new_password&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>导入sql</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p </span><br><span class="line"><span class="built_in">source</span> /home/xsy/db.sql</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h4><ol>
+<li>使用yum安装</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install redis</span><br><span class="line"></span><br><span class="line">已加载插件：fastestmirror, langpacks</span><br><span class="line">Loading mirror speeds from cached hostfile</span><br><span class="line"> * base: mirrors.aliyun.com</span><br><span class="line"> * extras: mirrors.aliyun.com</span><br><span class="line"> * updates: mirrors.ustc.edu.cn</span><br><span class="line">没有可用软件包 redis。</span><br><span class="line">错误：无须任何处理</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>下载fedora的epel仓库</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>再次安装</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install redis</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>运行和配置</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start redis <span class="comment">#启动redis</span></span><br><span class="line">systemctl <span class="built_in">enable</span> redis <span class="comment">#设置redis自动启动</span></span><br><span class="line">systemctl status redis  <span class="comment">#查看redis状态</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>设置密码</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/redis.conf</span><br><span class="line"><span class="comment"># 添加一行， requirepass  xsy82211622</span></span><br><span class="line">systemctl restart redis <span class="comment"># 重启redis</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="安装ngnix"><a href="#安装ngnix" class="headerlink" title="安装ngnix"></a>安装ngnix</h4><ol>
+<li>yum 安装</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>启动nginx</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> nginx <span class="comment"># 设置开机启动 </span></span><br><span class="line">sudo service nginx start <span class="comment"># 启动 nginx 服务</span></span><br><span class="line">sudo service nginx stop <span class="comment"># 停止 nginx 服务</span></span><br><span class="line">sudo service nginx restart <span class="comment"># 重启 nginx 服务</span></span><br><span class="line">sudo service nginx reload <span class="comment"># 重新加载配置，一般是在修改过 nginx 配置文件时使用。</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>nginx配置</p>
+<p>查看ngnix安装位置</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /usr/lib64/nginx /etc/nginx /usr/share/nginx /usr/share/man/man3/nginx.3pm.gz /usr/share/man/man8/nginx.8.gz</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">location /static &#123;</span><br><span class="line">	<span class="built_in">alias</span> /home/xsy/static;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">location /netdisk/ &#123;</span><br><span class="line">	proxy_pass http://localhost:7001/;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="合并文件-amp-amp-分割文件"><a href="#合并文件-amp-amp-分割文件" class="headerlink" title="合并文件 &amp;&amp; 分割文件"></a>合并文件 &amp;&amp; 分割文件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**合并录像 */</span></span><br><span class="line"><span class="keyword">async</span> <span class="title function_">combineVideo</span>(<span class="params">indexObj,videoDir</span>)&#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">logger</span>.<span class="title function_">info</span>(<span class="string">&#x27;combineVideo id&#x27;</span>,indexObj.<span class="property">id</span>);</span><br><span class="line">  <span class="keyword">let</span> video_path = path.<span class="title function_">resolve</span>(videoDir,indexObj.<span class="property">id</span>+<span class="string">&#x27;.mp4&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> chunkname <span class="keyword">of</span> indexObj.<span class="property">chunks</span>) &#123;</span><br><span class="line">    <span class="keyword">await</span> fs.<span class="property">promises</span>.<span class="title function_">appendFile</span>(video_path,<span class="keyword">await</span> fs.<span class="property">promises</span>.<span class="title function_">readFile</span>(path.<span class="title function_">resolve</span>(videoDir,<span class="string">&#x27;chunks&#x27;</span>,chunkname)));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 分割视频</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; id 录像id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; videoPath 录像地址</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">async</span> <span class="title function_">divideVideo</span>(<span class="params">id, videoPath</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">logger</span>.<span class="title function_">info</span>(<span class="string">&quot;divideVideo id:&quot;</span>, id, <span class="string">&quot;videoPath&quot;</span>, videoPath);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> videoDir = path.<span class="title function_">dirname</span>(videoPath);</span><br><span class="line">  <span class="keyword">const</span> chunkDir = path.<span class="title function_">resolve</span>(videoDir, <span class="string">&quot;chunks&quot;</span>);</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">await</span> fs.<span class="property">promises</span>.<span class="title function_">mkdir</span>(chunkDir);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">logger</span>.<span class="title function_">warn</span>(<span class="string">&quot;mkdir error&quot;</span>, <span class="string">&quot;dir&quot;</span>, chunkDir, <span class="string">&quot;id&quot;</span>, id);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> rs = fs.<span class="title function_">createReadStream</span>(videoPath);</span><br><span class="line">    <span class="keyword">const</span> <span class="variable constant_">CHUNK_SIZE</span> = <span class="variable language_">this</span>.<span class="property">config</span>.<span class="property">chunk_size</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> indexObj = &#123; id, <span class="attr">chunks</span>: [] &#125;;</span><br><span class="line">    <span class="keyword">let</span> chunkNum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> chunk;</span><br><span class="line"></span><br><span class="line">    rs.<span class="title function_">on</span>(<span class="string">&quot;readable&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">while</span> (<span class="literal">null</span> !== (chunk = rs.<span class="title function_">read</span>(<span class="variable constant_">CHUNK_SIZE</span>))) &#123;</span><br><span class="line">        <span class="keyword">let</span> chunkname = <span class="string">&quot;chunk&quot;</span> + chunkNum++;</span><br><span class="line">        indexObj.<span class="property">chunks</span>.<span class="title function_">push</span>(chunkname);</span><br><span class="line"></span><br><span class="line">        fs.<span class="title function_">writeFile</span>(path.<span class="title function_">resolve</span>(chunkDir, chunkname), chunk, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            <span class="title function_">reject</span>(err);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    rs.<span class="title function_">on</span>(<span class="string">&quot;end&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">       <span class="title function_">resolve</span>(indexObj);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    rs.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">logger</span>.<span class="title function_">error</span>(<span class="string">&quot;read video error,id:&quot;</span>, id, <span class="string">&quot;error:&quot;</span>, err);</span><br><span class="line">      <span class="title function_">reject</span>(err);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2022/08/01/proxy/" data-toggle="tooltip" data-placement="top" title="">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2022/07/29/hello-world/" data-toggle="tooltip" data-placement="top" title="Hello World">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Keith的博客 2022 
+                    <br>
+                    Theme by <a target="_blank" rel="noopener" href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a target="_blank" rel="noopener" href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://cymhappy.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="https://cymhappy.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
